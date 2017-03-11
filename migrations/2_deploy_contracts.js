@@ -1,4 +1,4 @@
-var AbieFund = artifacts.require("./Dether.sol");
+var Dether = artifacts.require("./Dether.sol");
 //var Web3 = require('../node_modules/web3');
 
 module.exports = function(deployer) {
