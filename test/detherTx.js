@@ -6,6 +6,8 @@ contract('DetherTx', function(accounts) {
       detherTx = instance;
       return detherTx.deposit.call({value: web3.toWei(42, "ether"), from: accounts[0]})
     })
-    .then(result => assert(result.toNumber(), 42000000000000000000, "error balance"))
+    .then(result => {
+      assert.equal(result.toNumber(), 41580000000000000000, "error balance")
+    })
   })
 });

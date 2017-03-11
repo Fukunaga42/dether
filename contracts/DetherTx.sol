@@ -13,7 +13,8 @@ contract DetherTx {
 	function sendCoin(address receiver, uint amount) returns(bool sufficient) {
 		if (balances[msg.sender] < amount) return false;
 		balances[msg.sender] -= amount;
-		balances[receiver] += amount;
+    uint amountWithFees = amount - (amount * 1/100);
+		balances[receiver] += amountWithFees;
 		Transfer(msg.sender, receiver, amount);
 		return true;
 	}
@@ -31,7 +32,7 @@ contract DetherTx {
     balances[msg.sender] += msg.value;
   }
 
-  function deposit () payable returns (uint){
-    return balances[msg.sender] += msg.value;
+  function deposit () payable returns (uint) {
+    return balances[msg.sender] = msg.value - msg.value * 1/100;
   }
 }
