@@ -61,7 +61,7 @@ class Home extends Component {
   render() {
     return (
       <div id="container">
-        <h1>DETHER</h1>
+        <h1 id="start">DETHER</h1>
         <br></br>
         <br></br>
         <br></br>
