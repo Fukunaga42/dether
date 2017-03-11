@@ -1,15 +1,35 @@
+#sellForm {
+  width: 60%;
+}
+
+input {
+  width: 100%;
+}
+
+#userinfo {
+  font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
 #start {
    border-bottom: 5px solid black;
    border-top: 5px solid black;
    font-size: 90px;
+   font-family: 'Ubuntu', sans-serif;
 }
 
 button {
 	font-size: 30px;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 h1 {
 	font-size: 50px;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .react-toggle {

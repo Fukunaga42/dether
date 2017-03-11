@@ -4,7 +4,7 @@ import { default as Web3 } from 'web3'
 import { default as contract } from 'truffle-contract'
 //import AbieFund from '../../build/contracts/AbieFund.json'
 
-import '../www/styles/Home.scss'
+import '../www/styles/Dether.scss'
 import Toggle from 'react-toggle'
 import {
   BrowserRouter as Router,
@@ -51,28 +51,41 @@ class Home extends Component {
     //browserhistory.push('/sellerconfig')
   }
 
+  goBuy = () => {
+    console.log("Bringing you to the buy side!")
+
+    window.location.assign('/#/buy')
+  }
+
+  goSell = () => {
+    console.log("Bringing you to the sell side!")
+
+    window.location.assign('/#/sell')
+  }
+
+
   render() {
     return (
       <div id="container">
-        <h1>DETHER</h1>
+        <h1 id="start">DETHER</h1>
         <br></br>
         <br></br>
         <br></br>
-        <p>Your wallet address : </p>
+        <p id="userinfo">Your wallet address : </p>
         <p>{this.state.account}</p>
         <br></br>
-        <p>Your wallet balance : </p>
+        <p id="userinfo">Your wallet balance : </p>
         <p>{this.state.balance}</p>
         <br></br>
         <br></br>
-        <button id="buy"> Buy </button>
+        <button id="buy" onClick={this.goBuy}> Buy </button>
         <br></br>
 
         <label>
         <Toggle
             defaultChecked={this.state.sell}
             onChange={this.goTeller} />
-          <span><button> Sell </button></span>
+          <span><button onClick={this.goSell}> Sell </button></span>
         </label>
 
         

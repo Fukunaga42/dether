@@ -8,6 +8,9 @@ import Proposal from './Proposal'
 import Home from './Home'
 import Config from './Config'
 import Start from './Start'
+import Buy from './Buy'
+import Chat from './Chat'
+import Sell from './Sell'
 
 import '../www/styles/main.scss'
 
@@ -22,6 +25,10 @@ render((
       <Route path="/" component={Start}/>
       <Route path="/home" component={Home}/>
       <Route path="/sellerconfig" component={Config}/>
+      <Route path="/buy" component={Buy}/>
+      <Route path="/chat" component={Chat}/>
+      <Route path="/sell" component={Sell}/>
+
 
     </Router>
   </MuiThemeProvider>
