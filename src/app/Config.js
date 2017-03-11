@@ -53,14 +53,14 @@ class Config extends Component {
   render() {
     return (
       <div id="container">
-        <h1>CONFIGGG</h1>
+        <h1>CONFIG</h1>
         <br></br>
         <br></br>
         <br></br>
-        <p>Your wallet address : </p>
+        <p>Set your price : </p>
         <p>{this.state.account}</p>
         <br></br>
-        <p>Your wallet balance : </p>
+        <p>Set your sales position : </p>
         <p>{this.state.balance}</p>
         <br></br>
         <br></br>
