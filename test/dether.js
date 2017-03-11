@@ -10,11 +10,9 @@ contract('Dether', (accounts) => {
     let structUser = ["Bob", 0, 123, 0]
 
     return Dether.new().then((instance) => {
-      // member 2 set delegate for AddMember to member 1
       dether = instance
       return dether.addCustomer("Bob", 0, 123, 0)
     }).then(() => {
-      // verify
       return dether.addCustomer.call("Bob", 0, 123, 0)
     }).then((result) => {
       assert.equal(result[0].toString(), "Bob", "error username")
