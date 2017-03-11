@@ -12,8 +12,15 @@ import {
   Link
 } from 'react-router-dom'
 import {browserhistory} from 'react-router'
+import { Map, TileLayer } from 'react-leaflet'
+const position = [51.0, -0.09]
+
 
 class Config extends Component {
+
+  constructor(props) {
+    super(props)
+  }
 
   state = {
     web3: false,
@@ -52,32 +59,30 @@ class Config extends Component {
 
   render() {
     return (
-      <div id="container">
-        <h1>CONFIG</h1>
-        <br></br>
-        <br></br>
-        <br></br>
-        <p>Set your price : </p>
-        <p>{this.state.account}</p>
-        <br></br>
-        <p>Set your sales position : </p>
-        <p>{this.state.balance}</p>
-        <br></br>
-        <br></br>
-        <button id="buy"> Buy </button>
-        <br></br>
 
-        <label>
-        <Toggle
-            defaultChecked={this.state.sell}
-            onChange={this.goTeller} />
-          <span><button> Sell </button></span>
-        </label>
 
-        
-        <br></br>
-        <button> Withdraw </button>
-      </div>
+
+<div>
+<h1>yoooooo</h1>
+<div id="map-holder">
+ <div className="container fill">
+   <div id="map">
+
+    <Map
+    style={{height: "100vh"}}
+    center={position}
+    zoom={10}>
+    <TileLayer
+      url="https://api.mapbox.com/styles/v1/mehdidether/cj05sgoox00dr2sof9tlf9mu1/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVoZGlkZXRoZXIiLCJhIjoiY2owNXNmYWhsMDAwdTMybGs4YmdkdjFycSJ9.krEYv2G9ecKLjHI0ckq4aw"
+      attribution="<attribution>" />
+    </Map>
+
+   </div>
+ </div>
+</div>
+
+</div>
+
     )
   }
 }
