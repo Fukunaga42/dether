@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import request from 'superagent'
 import { default as Web3 } from 'web3'
 import { default as contract } from 'truffle-contract'
-
 import '../www/styles/Dether.scss'
 import {
   BrowserRouter as Router,
@@ -12,40 +11,36 @@ import {
 import {browserhistory} from 'react-router'
 
 
-class Home extends Component {
+class Buy extends Component {
 
   state = {
+
   }
 
-  clickYes = () => {
-  console.log("Bringing you to Home Component baby!")
-  window.location.assign('/#/home')
+  componentDidMount() {
+
   }
 
-  clickNo = () => {
-    console.log("Bringing you in the past!")
-    window.location.assign('https://localbitcoins.com/fr/')
+  reachOut = () => {
+    console.log("We're opening the chat for you")
+    window.location.assign('/#/chat')
   }
 
   render() {
     return (
       <div id="container">
-        <br></br>
-        <br></br>
-        <br></br>
         <h1 id="start">DETHER</h1>
         <br></br>
         <br></br>
         <br></br>
-        <h1>Are you #dether ?</h1>
-        <span>
-        <button onClick={this.clickYes}> YES </button>
-        <button onClick={this.clickNo}> NO </button>
-        </span>
+        <h1>Here will go the map and user select his selected seller</h1>
         <br></br>
+        <br></br>
+        <br></br>
+        <button onClick={this.reachOut}>Put me in touch!</button>
       </div>
     )
   }
 }
 
-export default Home
+export default Buy

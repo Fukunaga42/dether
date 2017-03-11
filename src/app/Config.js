@@ -4,7 +4,7 @@ import { default as Web3 } from 'web3'
 import { default as contract } from 'truffle-contract'
 //import AbieFund from '../../build/contracts/AbieFund.json'
 
-import '../www/styles/Home.scss'
+import '../www/styles/Dether.scss'
 import Toggle from 'react-toggle'
 import {
   BrowserRouter as Router,
