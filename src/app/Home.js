@@ -5,42 +5,37 @@ import { default as contract } from 'truffle-contract'
 //import AbieFund from '../../build/contracts/AbieFund.json'
 
 import '../www/styles/Home.scss'
+import Toggle from 'react-toggle'
 
 class Home extends Component {
 
   state = {
     web3: false,
-    // balance: 0,
-    // addressContract: null,
-    // delegate: null,
-    // metaContract: null,
-    // accounts: null,
-    // askMembership: null,
-    // web3RPC: null,
-    // name: '',
-    // valueDeposit: 0,
-    // dataDeposit: '',
+    account: null,
+    balance: null,
+    detherBalance: null,
+    detherAddress: null,
+    buy: true,
+    sell: false,
+    withdraw: true
   }
 
   componentDidMount() {
 
     setTimeout(() => {
-      if (typeof web3 !== 'undefined') {
-        // web3 = new Web3(web3.currentProvider);
-        this.setState({web3: true})
-        let provider = new Web3.providers.HttpProvider(`http://${TESTRPC_HOST}:${TESTRPC_PORT}`)
-        const web3RPC = new Web3(provider)
-        this.setState({web3RPC})
+      this.setState({account: window.web3.eth.accounts[0] })
 
-      } else {
-        alert("install Metamask or use Mist")
-      }
+      web3.eth.getBalance(window.web3.eth.accounts[0], (err, res) => {
+        if (!err) {
+          var walletbalance = web3.fromWei(res, "ether").toNumber() + " ETH"
+          this.setState({balance: walletbalance})
+        } else {
+            console.log(err);
+        }
+    })
+
     }, 1000)
   }
-
-  // handleChangeDelegate = (event) => {
-  //   this.setState({delegate: event.target.value})
-  // }
 
   render() {
     return (
@@ -49,7 +44,26 @@ class Home extends Component {
         <br></br>
         <br></br>
         <br></br>
-        <button> Create my wallet </button>
+        <p>Your wallet address : </p>
+        <p>{this.state.account}</p>
+        <br></br>
+        <p>Your wallet balance : </p>
+        <p>{this.state.balance}</p>
+        <br></br>
+        <br></br>
+        <button id="buy"> Buy </button>
+        <br></br>
+
+        <label>
+        <Toggle
+            defaultChecked={this.state.sell}
+            onChange={this.handleBaconChange} />
+          <span><button> Sell </button></span>
+        </label>
+
+        
+        <br></br>
+        <button> Withdraw </button>
       </div>
     )
   }
