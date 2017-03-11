@@ -5,11 +5,12 @@ TODO: Set a license.
 pragma solidity ^0.4.8;
 
 /// @title Dether
-contract Dether {
+contract DetherUser {
     struct Details {
         // if possible check if it is an uniq username
         string username;
-        int rateTokenReputation;
+        uint volumeTrade;
+        uint nbTrade;
         uint localizationGps;
         uint commentIpfsId;
     }
@@ -23,25 +24,30 @@ contract Dether {
     function addCustomer
     (
       string _username,
-      int _rateTokenReputation,
+      uint _volumeTrade,
+      uint _nbTrade,
       uint _localizationGps,
       uint _commentIpfsId
     ) returns (
       string,
-      int,
+      uint,
+      uint,
       uint,
       uint
     ) {
          Details details = users[msg.sender];
          details.username = _username;
-         details.rateTokenReputation = _rateTokenReputation;
+         details.volumeTrade = _volumeTrade;
+         details.nbTrade = _nbTrade;
          details.localizationGps = _localizationGps;
          details.commentIpfsId = _commentIpfsId;
 
          return (
            _username,
-           _rateTokenReputation,
+           _volumeTrade,
+           _nbTrade,
            _localizationGps,
-           _commentIpfsId);
+           _commentIpfsId
+         );
     }
 }
