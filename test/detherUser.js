@@ -1,6 +1,6 @@
-var Dether = artifacts.require("./DetherUser.sol");
+var DetherUser = artifacts.require("./DetherUser.sol");
 
-contract('Dether', (accounts) => {
+contract('DetherUser', (accounts) => {
   it("add a customer", () => {
     var customer1 = accounts[0]
     var customer2 = accounts[1]
@@ -9,7 +9,7 @@ contract('Dether', (accounts) => {
 
     let structUser = ["Bob", 0, 0, 123, 0]
 
-    return Dether.new().then((instance) => {
+    return DetherUser.new().then((instance) => {
       dether = instance
       return dether.addCustomer("Bob", 0, 0, 123, 0)
     }).then(() => {

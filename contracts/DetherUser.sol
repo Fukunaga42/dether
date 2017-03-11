@@ -35,19 +35,19 @@ contract DetherUser {
       uint,
       uint
     ) {
-         Details details = users[msg.sender];
-         details.username = _username;
-         details.volumeTrade = _volumeTrade;
-         details.nbTrade = _nbTrade;
-         details.localizationGps = _localizationGps;
-         details.commentIpfsId = _commentIpfsId;
+       Details details = users[msg.sender];
+       details.username = _username;
+       details.volumeTrade = _volumeTrade;
+       details.nbTrade = _nbTrade;
+       details.localizationGps = _localizationGps;
+       details.commentIpfsId = _commentIpfsId;
 
-         return (
-           _username,
-           _volumeTrade,
-           _nbTrade,
-           _localizationGps,
-           _commentIpfsId
-         );
+       return (
+         _username,
+         _volumeTrade,
+         _nbTrade,
+         _localizationGps,
+         _commentIpfsId
+       );
     }
 }
