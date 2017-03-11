@@ -18,9 +18,6 @@ injectTapEventPlugin();
 render((
   <MuiThemeProvider muiTheme={getMuiTheme()}>
     <Router history={hashHistory}>
-      {
-      // <Route path="/" component={Proposal}/>
-      }
       <Route path="/" component={Home}/>
       <Route path="/sellerconfig" component={Config}/>
 

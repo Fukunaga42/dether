@@ -11,6 +11,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import {browserhistory} from 'react-router'
 
 class Config extends Component {
 
@@ -44,6 +45,9 @@ class Config extends Component {
 
   goTeller = () => {
     console.log("Hello")
+
+    window.location.assign('/sellerconfiggg')
+    //browserhistory.push('/sellerconfig')
   }
 
   render() {
