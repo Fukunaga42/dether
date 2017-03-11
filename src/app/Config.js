@@ -12,16 +12,7 @@ import {
   Link
 } from 'react-router-dom'
 
-// class Basic extends Component {
-//   state : {
-
-//   }
-
-
-
-// }
-
-class Home extends Component {
+class Config extends Component {
 
   state = {
     web3: false,
@@ -53,13 +44,12 @@ class Home extends Component {
 
   goTeller = () => {
     console.log("Hello")
-    this.context.router.push('/sellerconfig');
   }
 
   render() {
     return (
       <div id="container">
-        <h1>DETHER</h1>
+        <h1>CONFIGGG</h1>
         <br></br>
         <br></br>
         <br></br>
@@ -88,4 +78,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Config
