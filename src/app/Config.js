@@ -59,16 +59,30 @@ class Config extends Component {
 
   render() {
     return (
-      <div>
-        <Map
-          style={{height: "100vh"}}
-          center={position}
-          zoom={10}>
-          <TileLayer
-            url="https://api.mapbox.com/styles/v1/mehdidether/cj05sgoox00dr2sof9tlf9mu1/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVoZGlkZXRoZXIiLCJhIjoiY2owNXNmYWhsMDAwdTMybGs4YmdkdjFycSJ9.krEYv2G9ecKLjHI0ckq4aw"
-            attribution="<attribution>" />
-        </Map>
-      </div>
+
+
+
+<div>
+<h1>yoooooo</h1>
+<div id="map-holder">
+ <div className="container fill">
+   <div id="map">
+
+    <Map
+    style={{height: "100vh"}}
+    center={position}
+    zoom={10}>
+    <TileLayer
+      url="https://api.mapbox.com/styles/v1/mehdidether/cj05sgoox00dr2sof9tlf9mu1/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVoZGlkZXRoZXIiLCJhIjoiY2owNXNmYWhsMDAwdTMybGs4YmdkdjFycSJ9.krEYv2G9ecKLjHI0ckq4aw"
+      attribution="<attribution>" />
+    </Map>
+
+   </div>
+ </div>
+</div>
+
+</div>
+
     )
   }
 }
