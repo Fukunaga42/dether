@@ -14,7 +14,8 @@ import {browserhistory} from 'react-router'
 class Sell extends Component {
 
   state = {
-
+    qty: null,
+    address: ""
   }
 
   componentDidMount() {
@@ -27,8 +28,17 @@ class Sell extends Component {
   }
 
   verifyFunction = () => {
-    alert("Are these informations correct ?")
+    alert("Are these informations correct ? \n Quantity to sell: " + this.state.qty +"\n Address of buyer: "+ this.state.address)
   }
+
+  handleQtyChange = (e) => {
+    this.setState({qty: e.target.value})
+  }
+
+  handleAddressChange = (e) => {
+    this.setState({address: e.target.value})
+  }
+
 
   render() {
     return (
@@ -38,11 +48,11 @@ class Sell extends Component {
         <form id="sellForm">
           <div id="inputdiv">
             <br></br>
-            <input type="number" aria-describedby="emailHelp" placeholder="Enter the amount you are selling in €"></input>
+            <input onChange={this.handleQtyChange} type="number" aria-describedby="emailHelp" placeholder="Enter the amount you are selling in €"></input>
           </div>
           <div id="inputdiv">
             <br></br>
-            <input type="string" aria-describedby="emailHelp" placeholder="Enter the address of your buyer"></input>
+            <input onChange={this.handleAddressChange} type="text" aria-describedby="emailHelp" placeholder="Enter the address of your buyer"></input>
           </div>
         </form>
         <br></br>
