@@ -5,7 +5,7 @@ import { Router, Route, hashHistory } from 'react-router'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Proposal from './Proposal'
-
+import Home from './Home'
 import '../www/styles/main.scss'
 
 // Needed for onTouchTap
@@ -16,7 +16,11 @@ injectTapEventPlugin();
 render((
   <MuiThemeProvider muiTheme={getMuiTheme()}>
     <Router history={hashHistory}>
-      <Route path="/" component={Proposal}/>
+      {
+      // <Route path="/" component={Proposal}/>
+      }
+      <Route path="/" component={Home}/>
+
     </Router>
   </MuiThemeProvider>
 ), document.getElementById('app'))
