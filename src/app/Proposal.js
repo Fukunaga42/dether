@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import request from 'superagent'
 import { default as Web3 } from 'web3'
 import { default as contract } from 'truffle-contract'
-import AbieFund from '../../build/contracts/AbieFund.json'
+//import AbieFund from '../../build/contracts/AbieFund.json'
 
 import '../www/styles/Proposal.scss'
 
@@ -31,14 +31,15 @@ class Proposal extends Component {
       if (typeof web3 !== 'undefined') {
         // web3 = new Web3(web3.currentProvider);
         this.setState({web3: true})
-        let meta = contract(AbieFund)
-        this.setState({metaContract: meta})
+        //let meta = contract(AbieFund)
+        //this.setState({metaContract: meta})
         let provider = new Web3.providers.HttpProvider(`http://${TESTRPC_HOST}:${TESTRPC_PORT}`)
-        let metaCoinBalance = 0
-        meta.setProvider(provider)
+        //let metaCoinBalance = 0
+        //meta.setProvider(provider)
         const web3RPC = new Web3(provider)
         this.setState({web3RPC})
         // Get accounts.
+        /*
         web3RPC.eth.getAccounts((err, acc) => {
           console.log(err)
           console.log(acc)
@@ -46,7 +47,7 @@ class Proposal extends Component {
           return meta.deployed()
             .then((contract) => this.setState({addressContract: contract.address}))
             .catch((err) => console.error(err))
-        })
+        })*/
       } else {
         alert("install Metamask or use Mist")
       }
