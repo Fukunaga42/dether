@@ -12,14 +12,7 @@ import {
   Link
 } from 'react-router-dom'
 import {browserhistory} from 'react-router'
-// class Basic extends Component {
-//   state : {
 
-//   }
-
-
-
-// }
 
 class Home extends Component {
 
