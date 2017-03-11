@@ -62,8 +62,9 @@ class Config extends Component {
 
 
 
-<div>
-<h1>yoooooo</h1>
+<div id="container">
+<h1 id="start">DETHER</h1>
+<br></br>
 <div id="map-holder">
  <div className="container fill">
    <div id="map">
