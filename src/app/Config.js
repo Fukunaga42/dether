@@ -13,8 +13,7 @@ import {
 } from 'react-router-dom'
 import {browserhistory} from 'react-router'
 
-
-class Home extends Component {
+class Config extends Component {
 
   state = {
     web3: false,
@@ -47,21 +46,21 @@ class Home extends Component {
   goTeller = () => {
     console.log("Hello")
 
-    window.location.assign('/#/sellerconfig')
+    window.location.assign('/sellerconfiggg')
     //browserhistory.push('/sellerconfig')
   }
 
   render() {
     return (
       <div id="container">
-        <h1>DETHER</h1>
+        <h1>CONFIG</h1>
         <br></br>
         <br></br>
         <br></br>
-        <p>Your wallet address : </p>
+        <p>Set your price : </p>
         <p>{this.state.account}</p>
         <br></br>
-        <p>Your wallet balance : </p>
+        <p>Set your sales position : </p>
         <p>{this.state.balance}</p>
         <br></br>
         <br></br>
@@ -83,4 +82,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Config
