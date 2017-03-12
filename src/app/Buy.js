@@ -82,7 +82,9 @@ class Buy extends Component {
 
     return (
       <div className="container">
-        <h1 id="start">DETHER</h1>
+        <span><h1 id="start">DETHER</h1>
+                <img className="logo2" src="https://raw.githubusercontent.com/Fukunaga42/dether/master/src/www/public/logo2dether.jpg"></img></span>
+
         <h1>Select your prefered seller below</h1>
 
         <div className="map-holder">
