@@ -109,7 +109,7 @@ class Buy extends Component {
       console.log("testttt ",markers) */
 
     const markers = [
-      {key: 'marker1', position: [48.999999, 2.111111], children: '0x4f907E108D385fa11Fd12ab4157bf178D8fdA2d0 - price 22.5 - volumeTrade 0 - nbTrade 0'},
+      {key: 'marker1', position: [48.999999, 2.111111], children: '0x4f907E108D385fa11Fd12ab4157bf178D8fdA2d0 - price 30 - volumeTrade 0 - nbTrade 0'},
       {key: 'marker2', position: [48.864716, 2.333333], children: '0x85Ae97Eaa536Ee787592640176e7A4e6fB0B088f - price 21.99 - volumeTrade 0 - nbTrade 0'},
       {key: 'marker3', position: [48.865555, 2.777777], children: '0x6DaE09F8999B239e3C50A3837ba70B1C76911955 - price 22.3 - volumeTrade 0 - nbTrade 0'},
     ]

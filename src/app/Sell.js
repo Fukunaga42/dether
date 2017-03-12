@@ -65,15 +65,15 @@ class Sell extends Component {
         <div>
           <form id="sellForm">
             <div id="inputdiv">
-              <input onChange={this.handleQtyChange} type="number" aria-describedby="emailHelp" placeholder="Enter the amount you are selling in €"></input>
+              <input onChange={this.handleQtyChange} type="number" aria-describedby="emailHelp" placeholder="ETH sell amount"></input>
             </div>
             <div id="inputdiv">
-              <input onChange={this.handleAddressChange} type="text" aria-describedby="emailHelp" placeholder="Enter the address of your buyer"></input>
+              <input onChange={this.handleAddressChange} type="text" aria-describedby="emailHelp" placeholder="Wallet address"></input>
             </div>
           </form>
         </div>
         <div>
-          <button onClick={this.sendToContract}>Validez les informations</button>
+          <button onClick={this.sendToContract}>Confirm transaction informations</button>
         </div>
       </div>
     )
