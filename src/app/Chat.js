@@ -29,7 +29,9 @@ class Chat extends Component {
   render() {
     return (
       <div className="container">
-        <h1 id="start">DETHER</h1>
+
+        <img className="logo2" src="https://raw.githubusercontent.com/Fukunaga42/dether/master/src/www/public/logoapp.jpg"></img>
+
         <button onClick={this.goHome}>Return Home</button>
         <h2>Here will go the #whisper chat</h2>
       </div>
