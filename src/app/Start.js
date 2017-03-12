@@ -3,6 +3,7 @@ import request from 'superagent'
 import { default as Web3 } from 'web3'
 import { default as contract } from 'truffle-contract'
 
+
 import '../www/styles/Dether.scss'
 import {
   BrowserRouter as Router,
@@ -30,6 +31,7 @@ class Start extends Component {
   render() {
     return (
       <div className="container">
+              <img src="../www/public/logodether.jpg"></img>
         <h1 id="start">DETHER</h1>
         <h1>Are you #dether ?</h1>
         <button onClick={this.clickYes}> YES </button>
