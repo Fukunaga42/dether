@@ -39,6 +39,10 @@ class Home extends Start {
     if (window.isseller == true){
       this.setState({sell: true});
     }
+
+    if(window.detherB == undefined) {
+      window.detherB = 0;
+    }
   }
 
   componentDidMount() {
@@ -77,8 +81,10 @@ class Home extends Start {
 
         <p id="userinfo">Your wallet address : </p>
         <p>{this.state.account}</p>
-        <p id="userinfo">Your wallet balance : </p>
+        <p id="userinfo">Your metamask wallet balance : </p>
         <p>{this.state.balance}</p>
+        <p id="userinfo">Your dether deposit balance : </p>
+        <p>{window.detherB}</p>
         <button id="buy" onClick={this.goBuy}> Buy </button>
         <label>
           <Toggle
