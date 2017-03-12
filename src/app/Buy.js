@@ -40,8 +40,8 @@ class Buy extends Component {
 
   state = {
     latlng: {
-      lat: 21.158964,
-      lng: -86.845937,
+      lat: 48.999999,
+      lng: 2.111111,
     },
     markerlist: [],
   }
@@ -70,8 +70,8 @@ class Buy extends Component {
           dethertxContract.getAccount(res[i],(err,res) => {
             if (!err) {
               console.log(res, "price " ,res[0].toNumber(), "pos ", Number(res[5]));
-              markertab.push({key: 'marker' + i, position: [Number(res[4]), Number(res[5])], children: addr + " - price: " + res[0].toNumber() +  "- balance: "+ res[1].toNumber()  +"- volumeTrade: " + res[2].toNumber() + "- nb trade: " + res[3].toNumber()});
-              //markertab.push({key:  'marker3', position: [Number(res[4]), Number(res[5])], children: 'My third popup'});
+              //markertab[0] = {key: 'marker' + i, position: [Number(res[4]), Number(res[5])], children: addr + " - price: " + res[0].toNumber() +  "- balance: "+ res[1].toNumber()  +"- volumeTrade: " + res[2].toNumber() + "- nb trade: " + res[3].toNumber()};
+              markertab.push({key: 'marker' + i + 1, position: [Number(res[4]), Number(res[5])], children: addr + " - price: " + res[0].toNumber() +  "- balance: "+ res[1].toNumber()  +"- volumeTrade: " + res[2].toNumber() + "- nb trade: " + res[3].toNumber()});
 
             }
           })
@@ -104,15 +104,17 @@ class Buy extends Component {
   }
 
   render() {
+    //console.log("test ",this.state.markerlist)
+ /*  const markers = this.state.markerlist
+      console.log("testttt ",markers) */
 
-   const markers = this.state.markerlist
-/*
     const markers = [
-      {key: 'marker1', position: [51.5, -0.1], children: 'My first popup'},
-      {key: 'marker2', position: [51.51, -0.1], children: 'My second popup'},
-      {key: 'marker3', position: [51.49, -0.05], children: 'My third popup'},
-    ]*/
-
+      {key: 'marker1', position: [48.999999, 2.111111], children: '0x4f907E108D385fa11Fd12ab4157bf178D8fdA2d0 - price 22.5 - volumeTrade 0 - nbTrade 0'},
+      {key: 'marker2', position: [48.864716, 2.333333], children: '0x85Ae97Eaa536Ee787592640176e7A4e6fB0B088f - price 21.99 - volumeTrade 0 - nbTrade 0'},
+      {key: 'marker3', position: [48.865555, 2.777777], children: '0x6DaE09F8999B239e3C50A3837ba70B1C76911955 - price 22.3 - volumeTrade 0 - nbTrade 0'},
+    ]
+ /*   console.log("makers ",markers);
+    console.log("test ",this.state.markerlist) */
     return (
       <div className="container">
         <img className="logo2" src="https://raw.githubusercontent.com/Fukunaga42/dether/master/src/www/public/logoapp.jpg"></img>

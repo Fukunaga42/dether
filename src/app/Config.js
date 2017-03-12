@@ -94,7 +94,6 @@ class Config extends Component {
       }
     )
     // call smart contract to register as a seller
-
   }
 
   toggleDraggable = () => {
