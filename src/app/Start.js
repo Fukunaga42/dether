@@ -31,8 +31,7 @@ class Start extends Component {
   render() {
     return (
       <div className="container">
-              <img src="../www/public/logodether.jpg"></img>
-        <h1 id="start">DETHER</h1>
+        <img src="https://raw.githubusercontent.com/Fukunaga42/dether/master/src/www/public/logodether.jpg"></img>
         <h1>Are you #dether ?</h1>
         <button onClick={this.clickYes}> YES </button>
         <button onClick={this.clickNo}> NO </button>
