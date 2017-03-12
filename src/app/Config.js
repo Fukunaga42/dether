@@ -12,6 +12,7 @@ import {
   Link
 } from 'react-router-dom'
 import {browserhistory} from 'react-router'
+import Home from './Home'
 import { Map, TileLayer , Marker, Popup } from 'react-leaflet'
 const position = [51.0, -0.09]
 
@@ -62,7 +63,11 @@ class Config extends Component {
     console.log("latlng" , lat,lng)
     console.log(this.state.sellPrice)
     console.log("seller on")
+
     // call smart contract to register as a seller
+    window.isseller = true;
+    console.log("config ",window.isseller);
+    window.location.assign('/#/home')
 
   }
 

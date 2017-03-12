@@ -9,12 +9,15 @@ import {
   Link
 } from 'react-router-dom'
 import {browserhistory} from 'react-router'
-
+import { Map, TileLayer , Marker, Popup } from 'react-leaflet'
 
 class Buy extends Component {
 
   state = {
-
+    latlng: {
+      lat: 21.158964,
+      lng: -86.845937,
+    },
   }
 
   componentDidMount() {
@@ -34,8 +37,25 @@ class Buy extends Component {
         <br></br>
         <br></br>
         <h1>Here will go the map and user select his selected seller</h1>
-        <br></br>
-        <br></br>
+
+<div id="map-holder">
+ <div className="container fill">
+ <p> Click on the map below to set your Point of sales</p>
+   <div id="map">
+
+    <Map
+    style={{height: "50vh"}}
+        center={this.state.latlng}
+    ref='map'
+    zoom={10}>
+    <TileLayer
+      url="https://api.mapbox.com/styles/v1/mehdidether/cj05sgoox00dr2sof9tlf9mu1/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVoZGlkZXRoZXIiLCJhIjoiY2owNXNmYWhsMDAwdTMybGs4YmdkdjFycSJ9.krEYv2G9ecKLjHI0ckq4aw"
+      attribution="<attribution>" />
+    </Map>
+   </div>
+   </div>
+ </div>
+
         <br></br>
         <button onClick={this.reachOut}>Put me in touch!</button>
       </div>
