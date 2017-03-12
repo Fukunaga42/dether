@@ -43,7 +43,9 @@ class Sell extends Component {
   render() {
     return (
       <div className="container">
-        <h1 id="start">DETHER</h1>
+
+        <img className="logo2" src="https://raw.githubusercontent.com/Fukunaga42/dether/master/src/www/public/logoapp.jpg"></img>
+
         <div>
           <form id="sellForm">
             <div id="inputdiv">

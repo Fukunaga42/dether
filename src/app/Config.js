@@ -113,7 +113,9 @@ class Config extends Component {
 
     return (
       <div className="container">
-        <h1 id="start">DETHER</h1>
+
+        <img className="logo2" src="https://raw.githubusercontent.com/Fukunaga42/dether/master/src/www/public/logoapp.jpg"></img>
+
         <div>
           <p> Click on the map below to set your Point of sales</p>
           <form className="sellForm">
