@@ -60,9 +60,6 @@ contract DetherTx {
   function addAccount
   (
     string _username,
-    uint _balance,
-    uint _volumeTrade,
-    uint _nbTrade,
     uint _localizationGpsX,
     uint _localizationGpsY,
     uint _commentIpfsId
@@ -70,16 +67,13 @@ contract DetherTx {
     string,
     uint,
     uint,
-    uint,
-    uint,
-    uint,
     uint
   ) {
      Details details = users[msg.sender];
      details.username = _username;
      details.balance = 0;
-     details.volumeTrade = _volumeTrade;
-     details.nbTrade = _nbTrade;
+     details.volumeTrade = 0;
+     details.nbTrade = 0;
      details.localizationGpsX = _localizationGpsX;
      details.localizationGpsY = _localizationGpsY;
      details.commentIpfsId = _commentIpfsId;
@@ -89,9 +83,6 @@ contract DetherTx {
 
      return (
        _username,
-       _balance,
-       _volumeTrade,
-       _nbTrade,
        _localizationGpsX,
        _localizationGpsY,
        _commentIpfsId

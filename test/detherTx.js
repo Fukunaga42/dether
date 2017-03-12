@@ -16,11 +16,9 @@ contract('DetherTx', function(accounts) {
       () => dether.addAccount.call("Bob", 0, 0, 0, 123, 0, {from: accounts[0]})
     ).then(result => {
       assert.equal(result[0].toString(), "Bob", "error username")
-      assert.equal(result[1].toNumber(), 0, "error balance")
-      assert.equal(result[2].toNumber(), 0, "error volume")
-      assert.equal(result[3].toNumber(), 0, "error nb transaction")
-      assert.equal(result[4].toNumber(), 123, "error localization")
-      assert.equal(result[5].toNumber(), 0, "error comment id")
+      assert.equal(result[1].toNumber(), 0, "error localizationGpsX")
+      assert.equal(result[2].toNumber(), 0, "error localizationGpsY")
+      assert.equal(result[3].toNumber(), 0, "error commentIpfsId")
       return dether.deposit({value: 42000000, from: accounts[0]})
     }
     ).then(() => dether.getAddressesAccounts.call({from: accounts[0]})
