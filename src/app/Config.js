@@ -87,7 +87,7 @@ class Config extends Component {
   }
 
   render() {
-        const marker = this.state.hasLocation ? (
+      const marker = this.state.hasLocation ? (
       <Marker position={this.state.latlng}
       draggable={this.state.draggable}
       onDragend={this.updatePosition}
@@ -99,39 +99,36 @@ class Config extends Component {
     ) : null
 
     return (
-
-<div id="container">
-<h1 id="start">DETHER</h1>
-<br></br>
-<form id="sellForm">
-  <div id="inputdiv">
-    <br></br>
-    <input onChange={this.handlePriceChange} type="number" aria-describedby="emailHelp" placeholder="Enter your price"></input>
-  </div>
-</form>
-<div id="map-holder">
- <div className="container fill">
-   <div id="map">
-
-    <Map
-    style={{height: "50vh"}}
-        center={this.state.latlng}
-    onClick={this.handleClick}
-    onLocationfound={this.handleLocationFound}
-    ref='map'
-    zoom={10}>
-    <TileLayer
-      url="https://api.mapbox.com/styles/v1/mehdidether/cj05sgoox00dr2sof9tlf9mu1/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVoZGlkZXRoZXIiLCJhIjoiY2owNXNmYWhsMDAwdTMybGs4YmdkdjFycSJ9.krEYv2G9ecKLjHI0ckq4aw"
-      attribution="<attribution>" />
-              {marker}
-    </Map>
-
-   </div>
- </div>
-</div>
-
-</div>
-
+      <div className="container">
+        <h1 id="start">DETHER</h1>
+        <div>
+          <form className="sellForm">
+              <input
+                onChange={this.handlePriceChange}
+                type="number"
+                aria-describedby="emailHelp"
+                placeholder="Enter your price">
+              </input>
+          </form>
+        </div>
+        <div className="map-holder">
+          <Map
+            style={{height: "50vh"}}
+            center={this.state.latlng}
+            onClick={this.handleClick}
+            onLocationfound={this.handleLocationFound}
+            ref='map'
+            zoom={10}>
+            <TileLayer
+              url="https://api.mapbox.com/styles/v1/mehdidether/cj05sgoox00dr2sof9tlf9mu1/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVoZGlkZXRoZXIiLCJhIjoiY2owNXNmYWhsMDAwdTMybGs4YmdkdjFycSJ9.krEYv2G9ecKLjHI0ckq4aw"
+              attribution="<attribution>" />
+            {marker}
+          </Map>
+        </div>
+        <div>
+          <button>test</button>
+        </div>
+      </div>
     )
   }
 }

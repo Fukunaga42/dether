@@ -36,11 +36,11 @@ contract DetherTx {
 
     users[msg.sender].balance = SafeMath.safeSub(users[msg.sender].balance, amount);
     users[msg.sender].volumeTrade = SafeMath.safeAdd(users[msg.sender].volumeTrade, amount);
-    users[receiver].volumeTrade = SafeMath.safeAdd(users[receiver].volumeTrade ,amount);
+    users[receiver].volumeTrade = SafeMath.safeAdd(users[receiver].volumeTrade, amount);
     ++users[receiver].nbTrade;
     ++users[msg.sender].nbTrade;
-    uint amountWithoutFees = SafeMath.safeSub(amount , (amount * 1/100));
-    users[receiver].balance = SafeMath.safeAdd(users[receiver].balance,amountWithoutFees);
+    uint amountWithoutFees = SafeMath.safeSub(amount, (amount * 1/100));
+    users[receiver].balance = SafeMath.safeAdd(users[receiver].balance, amountWithoutFees);
     Transfer(msg.sender, receiver, amountWithoutFees);
 
 		return true;
