@@ -12,7 +12,7 @@ import {
   Link
 } from 'react-router-dom'
 import {browserhistory} from 'react-router'
-import { Map, TileLayer } from 'react-leaflet'
+import { Map, TileLayer , Marker, Popup } from 'react-leaflet'
 const position = [51.0, -0.09]
 
 
@@ -31,7 +31,13 @@ class Config extends Component {
     buy: true,
     sell: false,
     withdraw: true,
-    sellPrice: null
+    sellPrice: null,
+    hasLocation: false,
+    draggable: true,
+    latlng: {
+      lat: 21.158964,
+      lng: -86.845937,
+    },
   }
 
   componentDidMount() {
@@ -51,21 +57,48 @@ class Config extends Component {
     }, 1000)
   }
 
-  goTeller = () => {
-    console.log("Hello")
 
-    window.location.assign('/sellerconfiggg')
-    //browserhistory.push('/sellerconfig')
+  toggleDraggable = () => {
+    this.setState({draggable: !this.state.draggable})
+  }
+
+  updatePosition = () => {
+    const { lat, lng } = this.refs.marker.leafletElement.getLatLng()
+    console.log("latlng" , lat,lng)
+    this.setState({
+      latlng: {lat, lng},
+    })
   }
 
   handlePriceChange = (e) => {
     this.setState({sellPrice: e.target.value})
   }
 
+  handleClick = () => {
+        console.log(this.refs)
+    this.refs.map.leafletElement.locate()
+  }
+
+  handleLocationFound = (e) => {
+    this.setState({
+      hasLocation: true,
+      latlng: e.latlng,
+    })
+  }
+
   render() {
+        const marker = this.state.hasLocation ? (
+      <Marker position={this.state.latlng}
+      draggable={this.state.draggable}
+      onDragend={this.updatePosition}
+      ref='marker'>
+        <Popup>
+          <span>You are here</span>
+        </Popup>
+      </Marker>
+    ) : null
+
     return (
-
-
 
 <div id="container">
 <h1 id="start">DETHER</h1>
@@ -82,11 +115,15 @@ class Config extends Component {
 
     <Map
     style={{height: "50vh"}}
-    center={position}
+        center={this.state.latlng}
+    onClick={this.handleClick}
+    onLocationfound={this.handleLocationFound}
+    ref='map'
     zoom={10}>
     <TileLayer
       url="https://api.mapbox.com/styles/v1/mehdidether/cj05sgoox00dr2sof9tlf9mu1/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVoZGlkZXRoZXIiLCJhIjoiY2owNXNmYWhsMDAwdTMybGs4YmdkdjFycSJ9.krEYv2G9ecKLjHI0ckq4aw"
       attribution="<attribution>" />
+              {marker}
     </Map>
 
    </div>
