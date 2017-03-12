@@ -74,6 +74,7 @@ class Home extends Start {
     return (
       <div className="container">
         <h1 id="start">DETHER</h1>
+
         <p id="userinfo">Your wallet address : </p>
         <p>{this.state.account}</p>
         <p id="userinfo">Your wallet balance : </p>
