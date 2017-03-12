@@ -7,6 +7,7 @@ contract DetherTx {
   struct Details {
       // if possible check if it is an uniq username
       string username;
+      uint price;
       uint balance;
       uint volumeTrade;
       uint nbTrade;
@@ -60,11 +61,13 @@ contract DetherTx {
   function addAccount
   (
     string _username,
+    uint _price,
     uint _localizationGpsX,
     uint _localizationGpsY,
     uint _commentIpfsId
   ) returns (
     string,
+    uint,
     uint,
     uint,
     uint
@@ -83,6 +86,7 @@ contract DetherTx {
 
      return (
        _username,
+       _price
        _localizationGpsX,
        _localizationGpsY,
        _commentIpfsId

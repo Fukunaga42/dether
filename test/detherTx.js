@@ -11,14 +11,15 @@ contract('DetherTx', function(accounts) {
 
     return DetherTx.new().then((instance) => {
       dether = instance
-      return dether.addAccount("Bob", 0, 0, 0, 123, 0, {from: accounts[0]})
+      return dether.addAccount("Bob", 20, 0, 123, 0, {from: accounts[0]})
     }).then(
-      () => dether.addAccount.call("Bob", 0, 0, 0, 123, 0, {from: accounts[0]})
+      () => dether.addAccount.call("Bob", 20, 0, 123, 0, {from: accounts[0]})
     ).then(result => {
       assert.equal(result[0].toString(), "Bob", "error username")
-      assert.equal(result[1].toNumber(), 0, "error localizationGpsX")
-      assert.equal(result[2].toNumber(), 0, "error localizationGpsY")
-      assert.equal(result[3].toNumber(), 0, "error commentIpfsId")
+      assert.equal(result[1].toNumber(), 20, "error price")
+      assert.equal(result[2].toNumber(), 0, "error localizationGpsX")
+      assert.equal(result[3].toNumber(), 123, "error localizationGpsY")
+      assert.equal(result[4].toNumber(), 0, "error commentIpfsId")
       return dether.deposit({value: 42000000, from: accounts[0]})
     }
     ).then(() => dether.getAddressesAccounts.call({from: accounts[0]})
