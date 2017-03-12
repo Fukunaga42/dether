@@ -29,20 +29,11 @@ class Home extends Component {
 
   render() {
     return (
-      <div id="container">
-        <br></br>
-        <br></br>
-        <br></br>
+      <div className="container">
         <h1 id="start">DETHER</h1>
-        <br></br>
-        <br></br>
-        <br></br>
         <h1>Are you #dether ?</h1>
-        <span>
         <button onClick={this.clickYes}> YES </button>
         <button onClick={this.clickNo}> NO </button>
-        </span>
-        <br></br>
       </div>
     )
   }

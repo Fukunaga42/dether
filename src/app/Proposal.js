@@ -124,7 +124,7 @@ class Proposal extends Component {
 
   render() {
     return (
-      <div id="container">
+      <div className="container">
         <h1>Abie</h1>
         <p>Balance : {this.state.balance}</p>
         <p>

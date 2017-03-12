@@ -66,30 +66,19 @@ class Home extends Component {
 
   render() {
     return (
-      <div id="container">
+      <div className="container">
         <h1 id="start">DETHER</h1>
-        <br></br>
-        <br></br>
-        <br></br>
         <p id="userinfo">Your wallet address : </p>
         <p>{this.state.account}</p>
-        <br></br>
         <p id="userinfo">Your wallet balance : </p>
         <p>{this.state.balance}</p>
-        <br></br>
-        <br></br>
         <button id="buy" onClick={this.goBuy}> Buy </button>
-        <br></br>
-
         <label>
-        <Toggle
+          <Toggle
             defaultChecked={this.state.sell}
             onChange={this.goTeller} />
           <span><button onClick={this.goSell}> Sell </button></span>
         </label>
-
-        
-        <br></br>
         <button> Withdraw </button>
       </div>
     )

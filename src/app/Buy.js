@@ -14,11 +14,9 @@ import {browserhistory} from 'react-router'
 class Buy extends Component {
 
   state = {
-
   }
 
   componentDidMount() {
-
   }
 
   reachOut = () => {
@@ -28,15 +26,9 @@ class Buy extends Component {
 
   render() {
     return (
-      <div id="container">
+      <div className="container">
         <h1 id="start">DETHER</h1>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h1>Here will go the map and user select his selected seller</h1>
-        <br></br>
-        <br></br>
-        <br></br>
+        <h2>Here will go the map and user select his selected seller</h1>
         <button onClick={this.reachOut}>Put me in touch!</button>
       </div>
     )
