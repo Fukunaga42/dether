@@ -11,6 +11,8 @@ import Start from './Start'
 import Buy from './Buy'
 import Chat from './Chat'
 import Sell from './Sell'
+import Deposit from './Deposit'
+
 
 import '../www/styles/main.scss'
 
@@ -28,6 +30,7 @@ render((
       <Route path="/buy" component={Buy}/>
       <Route path="/chat" component={Chat}/>
       <Route path="/sell" component={Sell}/>
+      <Route path="/deposit" component={Deposit}/>
 
 
     </Router>
