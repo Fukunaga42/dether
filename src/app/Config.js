@@ -81,7 +81,6 @@ class Config extends Component {
       latstring,
       lngstring,
       0,
-      {value: web3.toWei(this.state.quantity, "ether")},
       (err, res) => {
         if(!err) {
           console.log("test:", web3.toWei(this.state.quantity, "ether"));
@@ -156,12 +155,7 @@ class Config extends Component {
                 aria-describedby="emailHelp"
                 placeholder="Enter your price">
               </input>
-              <input
-                onChange={this.handleQuantityChange}
-                type="number"
-                aria-describedby="enter the quantity"
-                placeholder="Enter the quantity">
-              </input>
+
           </form>
         </div>
         <div className="map-holder">
