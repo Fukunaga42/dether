@@ -1,9 +1,8 @@
 pragma solidity ^0.4.8;
 
-
 import "./SafeMath.sol";
 
-contract DetherTx is SafeMath {
+contract DetherTx {
   struct Details {
       // if possible check if it is an uniq username
       string username;
@@ -27,13 +26,13 @@ contract DetherTx is SafeMath {
 
   function sendCoin (address receiver, uint amount) returns(bool sufficient) {
     if (users[msg.sender].balance < amount) return false;
-    users[msg.sender].balance = safeSub(users[msg.sender].balance, amount);
-    users[msg.sender].volumeTrade = safeAdd(users[msg.sender].volumeTrade, amount);
-    users[receiver].volumeTrade = safeAdd(users[receiver].volumeTrade, amount);
+    users[msg.sender].balance = SafeMath.safeSub(users[msg.sender].balance, amount);
+    users[msg.sender].volumeTrade = SafeMath.safeAdd(users[msg.sender].volumeTrade, amount);
+    users[receiver].volumeTrade = SafeMath.safeAdd(users[receiver].volumeTrade, amount);
     ++users[receiver].nbTrade;
     ++users[msg.sender].nbTrade;
-    uint amountWithoutFees = safeSub(amount, (amount * 1/100));
-    users[receiver].balance = safeAdd(users[receiver].balance, amountWithoutFees);
+    uint amountWithoutFees = SafeMath.safeSub(amount, (amount * 1/100));
+    users[receiver].balance = SafeMath.safeAdd(users[receiver].balance, amountWithoutFees);
     Transfer(msg.sender, receiver, amountWithoutFees);
 
     return true;
@@ -101,7 +100,7 @@ contract DetherTx is SafeMath {
     // before `send` returns.
 
     //users[msg.sender].balance -= _amount;
-    users[msg.sender].balance = safeSub(users[msg.sender].balance,_amount);
+    users[msg.sender].balance = SafeMath.safeSub(users[msg.sender].balance,_amount);
 
     var amount = _amount;
 
