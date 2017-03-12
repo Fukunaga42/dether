@@ -1,6 +1,7 @@
 pragma solidity ^0.4.8;
 
 import "./ConvertLib.sol";
+import "./SafeMath.sol";
 
 contract DetherTx {
   struct Details {
@@ -22,10 +23,17 @@ contract DetherTx {
 
 	function sendCoin(address receiver, uint amount) returns(bool sufficient) {
 		if (users[msg.sender].balance < amount) return false;
+/*
 		users[msg.sender].balance -= amount;
     uint amountWithoutFees = amount - (amount * 1/100);
 		users[receiver].balance += amountWithoutFees;
 		Transfer(msg.sender, receiver, amountWithoutFees);
+*/
+    users[msg.sender].balance = SafeMath.safeSub(users[msg.sender].balance, amount);
+    uint amountWithoutFees = SafeMath.safeSub(amount , (amount * 1/100));
+    users[receiver].balance = SafeMath.safeAdd(users[receiver].balance,amountWithoutFees);
+    Transfer(msg.sender, receiver, amountWithoutFees);
+
 		return true;
 	}
 
@@ -33,12 +41,13 @@ contract DetherTx {
 		return ConvertLib.convert(getBalance(addr),2);
 	}
 
-	function getBalance(address addr) returns(uint) {
+	function getBalance(address addr) constant returns(uint) {
 		return users[addr].balance;
 	}
 
   function deposit () payable returns (uint) {
-    return users[msg.sender].balance += msg.value ;
+    return  users[msg.sender].balance += msg.value ;
+    //return SafeMath.safeAdd(users[msg.sender].balance,msg.value );
   }
 
   /// add and change the wallet of a passager
