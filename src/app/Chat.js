@@ -28,16 +28,10 @@ class Chat extends Component {
 
   render() {
     return (
-      <div id="container">
+      <div className="container">
         <h1 id="start">DETHER</h1>
-        <br></br>
         <button onClick={this.goHome}>Return Home</button>
-        <br></br>
-        <br></br>
-        <h1>Here will go the #whisper chat</h1>
-        <br></br>
-        <br></br>
-        <br></br>
+        <h2>Here will go the #whisper chat</h2>
       </div>
     )
   }

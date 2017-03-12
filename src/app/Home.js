@@ -19,7 +19,6 @@ class Home extends Start {
 
   constructor(props) {
     super(props)
-    console.log("props",props)
   }
 
   state = {
@@ -34,20 +33,15 @@ class Home extends Start {
   }
 
   componentWillMount() {
-        if (!window.isseller)
+    if (!window.isseller)
       window.isseller = false;
 
     if (window.isseller == true){
-      console.log("isseleer true");
       this.setState({sell: true});
-      console.log(this.state.sell);
     }
   }
 
   componentDidMount() {
-
-
-    console.log("seller ",window.isseller)
     setTimeout(() => {
 
       this.setState({account: window.web3.eth.accounts[0] })
@@ -59,57 +53,38 @@ class Home extends Start {
         } else {
             console.log(err);
         }
-    })
+      })
 
     }, 1000)
   }
 
   goTeller = () => {
-    console.log("Hello")
-
     window.location.assign('/#/sellerconfig')
-
   }
 
   goBuy = () => {
-    console.log("Bringing you to the buy side!")
-
     window.location.assign('/#/buy')
   }
 
   goSell = () => {
-    console.log("Bringing you to the sell side!")
-
     window.location.assign('/#/sell')
   }
 
-
   render() {
     return (
-      <div id="container">
+      <div className="container">
         <h1 id="start">DETHER</h1>
-        <br></br>
-        <br></br>
-        <br></br>
         <p id="userinfo">Your wallet address : </p>
         <p>{this.state.account}</p>
-        <br></br>
         <p id="userinfo">Your wallet balance : </p>
         <p>{this.state.balance}</p>
-        <br></br>
-        <br></br>
         <button id="buy" onClick={this.goBuy}> Buy </button>
-        <br></br>
-
         <label>
-        <Toggle
+          <Toggle
             defaultChecked={this.state.sell}
             onChange={this.goTeller} />
           <span><button disabled={!this.state.sell} onClick={this.goSell}> Sell </button></span>
         </label>
-
-        
-        <br></br>
         <button> Withdraw </button>
       </div>
     )

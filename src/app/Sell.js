@@ -42,26 +42,21 @@ class Sell extends Component {
 
   render() {
     return (
-      <div id="container">
+      <div className="container">
         <h1 id="start">DETHER</h1>
-        <br></br>
-        <form id="sellForm">
-          <div id="inputdiv">
-            <br></br>
-            <input onChange={this.handleQtyChange} type="number" aria-describedby="emailHelp" placeholder="Enter the amount you are selling in €"></input>
-          </div>
-          <div id="inputdiv">
-            <br></br>
-            <input onChange={this.handleAddressChange} type="text" aria-describedby="emailHelp" placeholder="Enter the address of your buyer"></input>
-          </div>
-        </form>
-        <br></br>
-        <br></br>
-        <button onClick={this.verifyFunction}>Validez les informations</button>
-
-        <br></br>
-        <br></br>
-        <br></br>
+        <div>
+          <form id="sellForm">
+            <div id="inputdiv">
+              <input onChange={this.handleQtyChange} type="number" aria-describedby="emailHelp" placeholder="Enter the amount you are selling in €"></input>
+            </div>
+            <div id="inputdiv">
+              <input onChange={this.handleAddressChange} type="text" aria-describedby="emailHelp" placeholder="Enter the address of your buyer"></input>
+            </div>
+          </form>
+        </div>
+        <div>
+          <button onClick={this.verifyFunction}>Validez les informations</button>
+        </div>
       </div>
     )
   }

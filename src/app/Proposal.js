@@ -76,20 +76,20 @@ class Proposal extends Component {
 
   setDelegate = () => {
     this.state.metaContract.at(this.state.addressContract)
-      .then((contract) => contract.setDelegate(
+      .then(contract => contract.setDelegate(
         0,
         this.state.delegate,
         {from: this.state.accounts[0]}
       ))
-      .then((result) => console.log(result))
-      .catch((err) => {
+      .then(result => console.log(result))
+      .catch(err => {
         console.error(err);
       })
   }
 
   askMembership = () => {
     this.state.metaContract.at(this.state.addressContract)
-      .then((contract) => {
+      .then(contract => {
         return contract.askMembership(
         {
           value: web3.toWei(10, "ether"),
@@ -97,15 +97,15 @@ class Proposal extends Component {
           gas: 4000000
         }
       )})
-      .then((result) => console.log(result))
-      .catch((err) => {
+      .then(result => console.log(result))
+      .catch(err => {
         console.error(err);
       })
   }
 
   addProposal = () => {
     this.state.metaContract.at(this.state.addressContract)
-      .then((contract) => {
+      .then(contract => {
         return contract.addProposal(
           this.state.name,
           this.state.valueDeposit,
@@ -116,15 +116,15 @@ class Proposal extends Component {
           gas: 4000000
         }
       )})
-      .then((result) => console.log(result))
-      .catch((err) => {
+      .then(result => result)
+      .catch(err => {
         console.error(err);
       })
   }
 
   render() {
     return (
-      <div id="container">
+      <div className="container">
         <h1>Abie</h1>
         <p>Balance : {this.state.balance}</p>
         <p>

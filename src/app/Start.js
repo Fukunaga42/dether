@@ -13,12 +13,6 @@ import {browserhistory} from 'react-router'
 
 
 class Start extends Component {
-
-/*  constructor(props) {
-    super(props)
-
-  }*/
-
  componentDidMount() {
  }
 
@@ -26,32 +20,20 @@ class Start extends Component {
   }
 
   clickYes = () => {
-          console.log(this.props.children)
-  console.log("Bringing you to Home Component baby!")
-  window.location.assign('/#/home')
+    window.location.assign('/#/home')
   }
 
   clickNo = () => {
-    console.log("Bringing you in the past!")
     window.location.assign('https://localbitcoins.com/fr/')
   }
 
   render() {
     return (
-      <div id="container">
-        <br></br>
-        <br></br>
-        <br></br>
+      <div className="container">
         <h1 id="start">DETHER</h1>
-        <br></br>
-        <br></br>
-        <br></br>
         <h1>Are you #dether ?</h1>
-        <span>
         <button onClick={this.clickYes}> YES </button>
         <button onClick={this.clickNo}> NO </button>
-        </span>
-        <br></br>
       </div>
     )
   }

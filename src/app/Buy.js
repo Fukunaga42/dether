@@ -21,7 +21,6 @@ class Buy extends Component {
   }
 
   componentDidMount() {
-
   }
 
   reachOut = () => {
@@ -31,33 +30,27 @@ class Buy extends Component {
 
   render() {
     return (
-      <div id="container">
+      <div className="container">
         <h1 id="start">DETHER</h1>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h1>Here will go the map and user select his selected seller</h1>
+        <h2>Here will go the map and user select his selected seller</h2>
 
-<div id="map-holder">
- <div className="container fill">
- <p> Click on the map below to set your Point of sales</p>
-   <div id="map">
-
-    <Map
-    style={{height: "50vh"}}
-        center={this.state.latlng}
-    ref='map'
-    zoom={10}>
-    <TileLayer
-      url="https://api.mapbox.com/styles/v1/mehdidether/cj05sgoox00dr2sof9tlf9mu1/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVoZGlkZXRoZXIiLCJhIjoiY2owNXNmYWhsMDAwdTMybGs4YmdkdjFycSJ9.krEYv2G9ecKLjHI0ckq4aw"
-      attribution="<attribution>" />
-    </Map>
-   </div>
-   </div>
- </div>
-
-        <br></br>
-        <button onClick={this.reachOut}>Put me in touch!</button>
+        <div className="map-holder">
+          <p> Click on the map below to set your Point of sales</p>
+          <div id="map">
+            <Map
+            style={{height: "50vh"}}
+                center={this.state.latlng}
+            ref='map'
+            zoom={10}>
+            <TileLayer
+              url="https://api.mapbox.com/styles/v1/mehdidether/cj05sgoox00dr2sof9tlf9mu1/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVoZGlkZXRoZXIiLCJhIjoiY2owNXNmYWhsMDAwdTMybGs4YmdkdjFycSJ9.krEYv2G9ecKLjHI0ckq4aw"
+              attribution="<attribution>" />
+            </Map>
+          </div>
+        </div>
+        <div>
+          <button onClick={this.reachOut}>Put me in touch!</button>
+        </div>
       </div>
     )
   }
