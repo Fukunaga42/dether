@@ -73,7 +73,7 @@ class Home extends Start {
   render() {
     return (
       <div className="container">
-        <h1 id="start">DETHER</h1>
+        <img className="logo2" src="https://raw.githubusercontent.com/Fukunaga42/dether/master/src/www/public/logoapp.jpg"></img>
 
         <p id="userinfo">Your wallet address : </p>
         <p>{this.state.account}</p>
