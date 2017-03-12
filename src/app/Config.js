@@ -57,6 +57,14 @@ class Config extends Component {
     }, 1000)
   }
 
+  sellerOn = () => {
+    const { lat, lng } = this.refs.marker.leafletElement.getLatLng()
+    console.log("latlng" , lat,lng)
+    console.log(this.state.sellPrice)
+    console.log("seller on")
+    // call smart contract to register as a seller
+
+  }
 
   toggleDraggable = () => {
     this.setState({draggable: !this.state.draggable})
@@ -64,7 +72,7 @@ class Config extends Component {
 
   updatePosition = () => {
     const { lat, lng } = this.refs.marker.leafletElement.getLatLng()
-    console.log("latlng" , lat,lng)
+    //console.log("latlng" , lat,lng)
     this.setState({
       latlng: {lat, lng},
     })
@@ -101,6 +109,7 @@ class Config extends Component {
     return (
 
 <div id="container">
+
 <h1 id="start">DETHER</h1>
 <br></br>
 <form id="sellForm">
@@ -109,8 +118,10 @@ class Config extends Component {
     <input onChange={this.handlePriceChange} type="number" aria-describedby="emailHelp" placeholder="Enter your price"></input>
   </div>
 </form>
+
 <div id="map-holder">
  <div className="container fill">
+ <p> Click on the map below to set your Point of sales</p>
    <div id="map">
 
     <Map
@@ -127,6 +138,8 @@ class Config extends Component {
     </Map>
 
    </div>
+   <div className="sellbtn">
+<button  onClick={this.sellerOn}> Register as a seller</button></div>
  </div>
 </div>
 

@@ -1,3 +1,12 @@
+
+.sellbtn {
+  margin-top:800px;
+    align-items: center;
+    justify-content: center;
+  width:200px;
+
+}
+
 .leaflet-container {
   height: 50vh;
 }
@@ -29,6 +38,8 @@ html, body
 }
 
 .container{
+  display:flex;
+  flex-direction:column;
   height:60em;
    max-width:60em;
    padding: 0.2em;
