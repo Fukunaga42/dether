@@ -52,7 +52,7 @@ contract DetherTx {
 
 
   function deposit () payable returns (uint) {
-    return  users[msg.sender].balance += msg.value ;
+    return  users[msg.sender].balance += msg.value;
     //return SafeMath.safeAdd(users[msg.sender].balance,msg.value );
   }
 
@@ -64,7 +64,7 @@ contract DetherTx {
     string _localizationGpsX,
     string _localizationGpsY,
     uint _commentIpfsId
-  ) returns (
+  ) payable returns (
     string,
     uint,
     string,
@@ -74,7 +74,7 @@ contract DetherTx {
      Details details = users[msg.sender];
      details.username = _username;
      details.price = _price;
-     details.balance = 0;
+     details.balance += msg.value;
      details.volumeTrade = 0;
      details.nbTrade = 0;
      details.localizationGpsX = _localizationGpsX;
