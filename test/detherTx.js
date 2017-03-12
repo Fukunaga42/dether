@@ -22,15 +22,16 @@ contract('DetherTx', function(accounts) {
       assert.equal(result[4].toNumber(), 0, "error commentIpfsId")
       return dether.deposit({value: 42000000, from: accounts[0]})
     }
+    ).then(() => dether.addAccount("Alice", 20, 0, 123, 0, {from: accounts[1]})
     ).then(() => dether.getAddressesAccounts.call({from: accounts[0]})
-    ).then(result => console.log(result)
+  ).then(result => assert.deepEqual(result, [accounts[0], accounts[1]], "error get address accounts")
     ).then(() => dether.getBalance.call({from: accounts[0]})
     ).then(result => {
       assert.equal(result.toNumber(), 42000000, "error balance")
       return dether.sendCoin(accounts[1], 10000000, {from: accounts[0]})
     }).then(() => dether.getBalance.call({from: accounts[0]})
     ).then(result => assert.equal(result.toNumber(), 32000000, "error balance customer1 after transaction")
-  ).then(() => dether.getBalance.call({from: accounts[1]})
+    ).then(() => dether.getBalance.call({from: accounts[1]})
     ).then(result => {
       assert.equal(result.toNumber(), 9900000, "error balance customer2 after transaction")
       return dether.getVolume.call({from: accounts[1]})
