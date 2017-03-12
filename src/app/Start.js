@@ -12,12 +12,21 @@ import {
 import {browserhistory} from 'react-router'
 
 
-class Home extends Component {
+class Start extends Component {
+
+/*  constructor(props) {
+    super(props)
+
+  }*/
+
+ componentDidMount() {
+ }
 
   state = {
   }
 
   clickYes = () => {
+          console.log(this.props.children)
   console.log("Bringing you to Home Component baby!")
   window.location.assign('/#/home')
   }
@@ -48,4 +57,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Start

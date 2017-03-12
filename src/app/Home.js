@@ -6,6 +6,7 @@ import { default as contract } from 'truffle-contract'
 
 import '../www/styles/Dether.scss'
 import Toggle from 'react-toggle'
+import Start from './Start'
 import {
   BrowserRouter as Router,
   Route,
@@ -14,7 +15,12 @@ import {
 import {browserhistory} from 'react-router'
 
 
-class Home extends Component {
+class Home extends Start {
+
+  constructor(props) {
+    super(props)
+    console.log("props",props)
+  }
 
   state = {
     web3: false,
@@ -27,9 +33,23 @@ class Home extends Component {
     withdraw: true
   }
 
+  componentWillMount() {
+        if (!window.isseller)
+      window.isseller = false;
+
+    if (window.isseller == true){
+      console.log("isseleer true");
+      this.setState({sell: true});
+      console.log(this.state.sell);
+    }
+  }
+
   componentDidMount() {
 
+
+    console.log("seller ",window.isseller)
     setTimeout(() => {
+
       this.setState({account: window.web3.eth.accounts[0] })
 
       web3.eth.getBalance(window.web3.eth.accounts[0], (err, res) => {
@@ -48,7 +68,7 @@ class Home extends Component {
     console.log("Hello")
 
     window.location.assign('/#/sellerconfig')
-    //browserhistory.push('/sellerconfig')
+
   }
 
   goBuy = () => {
@@ -85,7 +105,7 @@ class Home extends Component {
         <Toggle
             defaultChecked={this.state.sell}
             onChange={this.goTeller} />
-          <span><button onClick={this.goSell}> Sell </button></span>
+          <span><button disabled={!this.state.sell} onClick={this.goSell}> Sell </button></span>
         </label>
 
         
