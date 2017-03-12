@@ -12,6 +12,7 @@ import Buy from './Buy'
 import Chat from './Chat'
 import Sell from './Sell'
 import Deposit from './Deposit'
+import Withdraw from './Withdraw'
 
 
 import '../www/styles/main.scss'
@@ -31,6 +32,8 @@ render((
       <Route path="/chat" component={Chat}/>
       <Route path="/sell" component={Sell}/>
       <Route path="/deposit" component={Deposit}/>
+      <Route path="/withdraw" component={Withdraw}/>
+
 
 
     </Router>

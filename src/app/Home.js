@@ -74,6 +74,10 @@ class Home extends Start {
     window.location.assign('/#/sell')
   }
 
+  goWithdraw = () => {
+    window.location.assign('/#/withdraw')
+  }
+
   render() {
     return (
       <div className="container">
@@ -92,7 +96,7 @@ class Home extends Start {
             onChange={this.goTeller} />
           <span><button disabled={!this.state.sell} onClick={this.goSell}> Sell </button></span>
         </label>
-        <button> Withdraw </button>
+        <button onClick={this.goWithdraw}> Withdraw </button>
       </div>
     )
   }
