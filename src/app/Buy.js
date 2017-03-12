@@ -43,27 +43,59 @@ class Buy extends Component {
       lat: 21.158964,
       lng: -86.845937,
     },
-    markerslist: null,
+    markerlist: [],
   }
 
   componentWillMount() {
     // smart contract call to get the list
-    const _markers = [
+    /*const _markers = [
       {key: 'marker1', position: [this.state.latlng.lat - 0.1, this.state.latlng.lng - 0.1], children: 'My first popup'},
       {key: 'marker2', position: [this.state.latlng.lat + 0.1, this.state.latlng.lng + 0.1], children: 'My second popup'},
       {key: 'marker3', position: [this.state.latlng.lat + 0.2, this.state.latlng.lng + 0.2], children: 'My third popup'},
     ]
+    */
     let markertab = [];
+
+    var untitled1_dethertxContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"getBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_amount","type":"uint256"}],"name":"withdraw","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"listAdressesUsers","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_username","type":"string"},{"name":"_price","type":"uint256"},{"name":"_localizationGpsX","type":"string"},{"name":"_localizationGpsY","type":"string"},{"name":"_commentIpfsId","type":"uint256"}],"name":"addAccount","outputs":[{"name":"","type":"string"},{"name":"","type":"uint256"},{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"uint256"}],"payable":true,"type":"function"},{"constant":true,"inputs":[],"name":"getAddressesAccounts","outputs":[{"name":"","type":"address[]"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"receiver","type":"address"},{"name":"amount","type":"uint256"}],"name":"sendCoin","outputs":[{"name":"sufficient","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"users","outputs":[{"name":"username","type":"string"},{"name":"price","type":"uint256"},{"name":"balance","type":"uint256"},{"name":"volumeTrade","type":"uint256"},{"name":"nbTrade","type":"uint256"},{"name":"localizationGpsX","type":"string"},{"name":"localizationGpsY","type":"string"},{"name":"commentIpfsId","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"getVolume","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"deposit","outputs":[{"name":"","type":"uint256"}],"payable":true,"type":"function"},{"constant":true,"inputs":[],"name":"getNbTrade","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_user","type":"address"}],"name":"getAccount","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"inputs":[],"payable":false,"type":"constructor"},{"payable":true,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"}]);
+    var dethertxContract = untitled1_dethertxContract.at("0xee10b1e71131654488e9c0274430c3191aaab728");
+
+    console.log("web 3 contract", dethertxContract)
+
+    dethertxContract.getAddressesAccounts((err, res) => {
+      if(!err) {
+        console.log("res", res);
+        for (var i = 0; i < res.length; i++) {
+          console.log(res[i]);
+          var addr = res[i];
+          dethertxContract.getAccount(res[i],(err,res) => {
+            if (!err) {
+              console.log(res, "price " ,res[0].toNumber(), "pos ", Number(res[5]));
+              markertab.push({key: 'marker' + i, position: [Number(res[4]), Number(res[5])], children: addr + " - price: " + res[0].toNumber() +  "- balance: "+ res[1].toNumber()  +"- volumeTrade: " + res[2].toNumber() + "- nb trade: " + res[3].toNumber()});
+              //markertab.push({key:  'marker3', position: [Number(res[4]), Number(res[5])], children: 'My third popup'});
+
+            }
+          })
+        }
+        this.setState({markerlist: markertab});
+        console.log("endfor ",this.state.markerlist)
+      } else {
+        console.log(err);
+      }
+    })
+
+/*
     for (var i = 0; i < _markers.length ; i++) {
       console.log("marker" , i)
       markertab.push(_markers[i]);
-    }
-    this.setState({markerlist: markertab});
-
+    }*/
   }
 
   componentDidMount() {
-    console.log(this.state.markerlist);
+    console.log("did mount ",this.state.markerlist);
+
+
+
+
   }
 
   reachOut = () => {
@@ -73,12 +105,13 @@ class Buy extends Component {
 
   render() {
 
+   const markers = this.state.markerlist
+/*
     const markers = [
-      {key: 'marker1', position: [this.state.latlng.lat - 0.1, this.state.latlng.lng - 0.1], children: 'My first popup'},
-      {key: 'marker2', position: [this.state.latlng.lat + 0.1, this.state.latlng.lng + 0.1], children: 'My second popup'},
-      {key: 'marker3', position: [this.state.latlng.lat + 0.2, this.state.latlng.lng + 0.2], children: 'My third popup'},
-    ]
-
+      {key: 'marker1', position: [51.5, -0.1], children: 'My first popup'},
+      {key: 'marker2', position: [51.51, -0.1], children: 'My second popup'},
+      {key: 'marker3', position: [51.49, -0.05], children: 'My third popup'},
+    ]*/
 
     return (
       <div className="container">
