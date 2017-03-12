@@ -89,13 +89,19 @@ class Home extends Start {
         <p>{this.state.balance}</p>
         <p id="userinfo">Your dether deposit balance : </p>
         <p>{window.detherB}</p>
-        <button id="buy" onClick={this.goBuy}> Buy </button>
+        <p>
+          <button id="buy" onClick={this.goBuy}> Buy </button>
+        </p>
+        <br/><br/>
         <label>
           <Toggle
             defaultChecked={this.state.sell}
             onChange={this.goTeller} />
+          <span>&nbsp;&nbsp;</span>
           <span><button disabled={!this.state.sell} onClick={this.goSell}> Sell </button></span>
         </label>
+        <br/><br/>
+        <br/><br/>
         <button onClick={this.goWithdraw}> Withdraw </button>
       </div>
     )

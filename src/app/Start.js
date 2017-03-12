@@ -33,8 +33,10 @@ class Start extends Component {
       <div className="container">
         <img src="https://raw.githubusercontent.com/Fukunaga42/dether/master/src/www/public/logodether.jpg"></img>
         <h1>Are you #dether ?</h1>
-        <button onClick={this.clickYes}> YES </button>
-        <button onClick={this.clickNo}> NO </button>
+        <div>
+          <button onClick={this.clickYes}> YES </button>
+          <button onClick={this.clickNo}> NO </button>
+        </div>
       </div>
     )
   }
