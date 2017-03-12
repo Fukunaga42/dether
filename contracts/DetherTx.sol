@@ -1,6 +1,6 @@
 pragma solidity ^0.4.8;
 
-import "./ConvertLib.sol";
+
 import "./SafeMath.sol";
 
 contract DetherTx {
@@ -16,20 +16,29 @@ contract DetherTx {
 
   mapping(address => Details) public users;
 
-	event Transfer(address indexed _from, address indexed _to, uint256 _value);
+	event Transfer (address indexed _from, address indexed _to, uint256 _value);
 
 	function DetherTx() {
 	}
 
-	function sendCoin(address receiver, uint amount) returns(bool sufficient) {
+	function sendCoin (address receiver, uint amount) returns(bool sufficient) {
 		if (users[msg.sender].balance < amount) return false;
 /*
 		users[msg.sender].balance -= amount;
+    users[msg.sender].volumeTrade += amount;
+    users[receiver].volumeTrade += amount;
+    ++users[receiver].nbTrade;
+    ++users[msg.sender].nbTrade;
     uint amountWithoutFees = amount - (amount * 1/100);
 		users[receiver].balance += amountWithoutFees;
 		Transfer(msg.sender, receiver, amountWithoutFees);
 */
+
     users[msg.sender].balance = SafeMath.safeSub(users[msg.sender].balance, amount);
+    users[msg.sender].volumeTrade = SafeMath.safeAdd(users[msg.sender].volumeTrade, amount);
+    users[receiver].volumeTrade = SafeMath.safeAdd(users[receiver].volumeTrade ,amount);
+    ++users[receiver].nbTrade;
+    ++users[msg.sender].nbTrade;
     uint amountWithoutFees = SafeMath.safeSub(amount , (amount * 1/100));
     users[receiver].balance = SafeMath.safeAdd(users[receiver].balance,amountWithoutFees);
     Transfer(msg.sender, receiver, amountWithoutFees);
@@ -37,13 +46,18 @@ contract DetherTx {
 		return true;
 	}
 
-	function getBalanceInEth(address addr) returns(uint) {
-		return ConvertLib.convert(getBalance(addr),2);
+	function getBalance () constant returns(uint) {
+		return users[msg.sender].balance;
 	}
 
-	function getBalance(address addr) constant returns(uint) {
-		return users[addr].balance;
-	}
+  function getVolume () constant returns(uint) {
+    return users[msg.sender].volumeTrade;
+  }
+
+  function getNbTrade () constant returns(uint) {
+    return users[msg.sender].nbTrade;
+  }
+
 
   function deposit () payable returns (uint) {
     return  users[msg.sender].balance += msg.value ;
@@ -83,6 +97,20 @@ contract DetherTx {
        _localizationGps,
        _commentIpfsId
      );
+  }
+
+  function withdraw (uint _amount) {
+    if (users[msg.sender].balance < _amount) throw;
+    // It is important to set this to zero because the recipient
+    // can call this function again as part of the receiving call
+    // before `send` returns.
+
+    //users[msg.sender].balance -= _amount;
+    users[msg.sender].balance = SafeMath.safeSub(users[msg.sender].balance,_amount);
+
+    var amount = _amount;
+
+    if(!msg.sender.send(amount)) throw;
   }
 
   // fallback

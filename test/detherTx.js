@@ -22,13 +22,22 @@ contract('DetherTx', function(accounts) {
       assert.equal(result[4].toNumber(), 123, "error localization")
       assert.equal(result[5].toNumber(), 0, "error comment id")
       return dether.deposit({value: 42000000, from: accounts[0]})
-    }).then(() => dether.getBalance.call(accounts[0])
+    }).then(() => dether.getBalance.call({from: accounts[0]})
     ).then(result => {
       assert.equal(result.toNumber(), 42000000, "error balance")
       return dether.sendCoin(accounts[1], 10000000, {from: accounts[0]})
-    }).then(() => dether.getBalance.call(accounts[0])
+    }).then(() => dether.getBalance.call({from: accounts[0]})
     ).then(result => assert.equal(result.toNumber(), 32000000, "error balance customer1 after transaction")
-    ).then(() => dether.getBalance.call(accounts[1])
-  ).then(result => assert.equal(result.toNumber(), 9900000, "error balance customer2 after transaction"))
+  ).then(() => dether.getBalance.call({from: accounts[1]})
+    ).then(result => {
+      assert.equal(result.toNumber(), 9900000, "error balance customer2 after transaction")
+      return dether.getVolume.call({from: accounts[1]})
+    }).then(result => assert.equal(result.toNumber(), 10000000, "error volume customer1 after transaction")
+    ).then(() => dether.getNbTrade.call({from: accounts[1]})
+    ).then(result => {
+      assert.equal(result.toNumber(), 1, "error trade number customer1 after transaction")
+      return dether.withdraw(7000000, {from: accounts[1]})
+    }).then(() => dether.getBalance.call({from: accounts[1]})
+  ).then(result => assert.equal(result.toNumber(), 2900000, "error withdraw customer2"))
   })
 });

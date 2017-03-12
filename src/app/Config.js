@@ -30,7 +30,8 @@ class Config extends Component {
     detherAddress: null,
     buy: true,
     sell: false,
-    withdraw: true
+    withdraw: true,
+    sellPrice: null
   }
 
   componentDidMount() {
@@ -57,6 +58,10 @@ class Config extends Component {
     //browserhistory.push('/sellerconfig')
   }
 
+  handlePriceChange = (e) => {
+    this.setState({sellPrice: e.target.value})
+  }
+
   render() {
     return (
 
@@ -65,12 +70,18 @@ class Config extends Component {
 <div id="container">
 <h1 id="start">DETHER</h1>
 <br></br>
+<form id="sellForm">
+  <div id="inputdiv">
+    <br></br>
+    <input onChange={this.handlePriceChange} type="number" aria-describedby="emailHelp" placeholder="Enter your price"></input>
+  </div>
+</form>
 <div id="map-holder">
  <div className="container fill">
    <div id="map">
 
     <Map
-    style={{height: "100vh"}}
+    style={{height: "50vh"}}
     center={position}
     zoom={10}>
     <TileLayer
