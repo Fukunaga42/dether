@@ -87,7 +87,7 @@ class Config extends Component {
           console.log("test:", web3.toWei(this.state.quantity, "ether"));
           window.isseller = true;
           console.log("config ", window.isseller);
-          window.location.assign('/#/home')
+          window.location.assign('/#/deposit')
         } else {
           console.log(err);
         }
@@ -178,7 +178,7 @@ class Config extends Component {
           </Map>
         </div>
         <div>
-          <button onClick={this.sellerOn}>Register as a seller</button>
+          <button onClick={this.sellerOn}>Register and proceed to deposit</button>
         </div>
       </div>
     )
