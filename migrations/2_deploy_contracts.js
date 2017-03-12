@@ -4,7 +4,7 @@ var SafeMath = artifacts.require("./SafeMath.sol");
 
 module.exports = function(deployer) {
 	//var web3RPC = new Web3(deployer.provider);
-  	deployer.deploy(SafeMath);
+  deployer.deploy(SafeMath);
   deployer.link(SafeMath, DetherTx);
 	deployer.deploy(DetherTx);
 	/*web3RPC.eth.getAccounts((error, accounts) => {

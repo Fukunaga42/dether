@@ -10,9 +10,12 @@ contract DetherTx {
       uint balance;
       uint volumeTrade;
       uint nbTrade;
-      uint localizationGps;
+      uint localizationGpsX;
+      uint localizationGpsY;
       uint commentIpfsId;
   }
+
+  address[] public listAdressesUsers;
 
   mapping(address => Details) public users;
 
@@ -23,17 +26,6 @@ contract DetherTx {
 
 	function sendCoin (address receiver, uint amount) returns(bool sufficient) {
 		if (users[msg.sender].balance < amount) return false;
-/*
-		users[msg.sender].balance -= amount;
-    users[msg.sender].volumeTrade += amount;
-    users[receiver].volumeTrade += amount;
-    ++users[receiver].nbTrade;
-    ++users[msg.sender].nbTrade;
-    uint amountWithoutFees = amount - (amount * 1/100);
-		users[receiver].balance += amountWithoutFees;
-		Transfer(msg.sender, receiver, amountWithoutFees);
-*/
-
     users[msg.sender].balance = SafeMath.safeSub(users[msg.sender].balance, amount);
     users[msg.sender].volumeTrade = SafeMath.safeAdd(users[msg.sender].volumeTrade, amount);
     users[receiver].volumeTrade = SafeMath.safeAdd(users[receiver].volumeTrade, amount);
@@ -71,10 +63,12 @@ contract DetherTx {
     uint _balance,
     uint _volumeTrade,
     uint _nbTrade,
-    uint _localizationGps,
+    uint _localizationGpsX,
+    uint _localizationGpsY,
     uint _commentIpfsId
   ) returns (
     string,
+    uint,
     uint,
     uint,
     uint,
@@ -86,15 +80,20 @@ contract DetherTx {
      details.balance = 0;
      details.volumeTrade = _volumeTrade;
      details.nbTrade = _nbTrade;
-     details.localizationGps = _localizationGps;
+     details.localizationGpsX = _localizationGpsX;
+     details.localizationGpsY = _localizationGpsY;
      details.commentIpfsId = _commentIpfsId;
+
+     ++listAdressesUsers.length;
+     listAdressesUsers[listAdressesUsers.length-1] = msg.sender;
 
      return (
        _username,
        _balance,
        _volumeTrade,
        _nbTrade,
-       _localizationGps,
+       _localizationGpsX,
+       _localizationGpsY,
        _commentIpfsId
      );
   }
@@ -111,6 +110,30 @@ contract DetherTx {
     var amount = _amount;
 
     if(!msg.sender.send(amount)) throw;
+  }
+
+  function getAddressesAccounts () constant returns (address[]) {
+    return listAdressesUsers;
+  }
+
+  function getAccount (address _user) constant returns (
+      string,
+      uint,
+      uint,
+      uint,
+      uint,
+      uint,
+      uint
+    ) {
+    return (
+      users[_user].username,
+      users[_user].balance,
+      users[_user].volumeTrade,
+      users[_user].nbTrade,
+      users[_user].localizationGpsX,
+      users[_user].localizationGpsY,
+      users[_user].commentIpfsId
+    );
   }
 
   // fallback

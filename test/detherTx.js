@@ -11,9 +11,9 @@ contract('DetherTx', function(accounts) {
 
     return DetherTx.new().then((instance) => {
       dether = instance
-      return dether.addAccount("Bob", 0, 0, 0, 123, 0)
+      return dether.addAccount("Bob", 0, 0, 0, 123, 0, {from: accounts[0]})
     }).then(
-      () => dether.addAccount.call("Bob", 0, 0, 0, 123, 0)
+      () => dether.addAccount.call("Bob", 0, 0, 0, 123, 0, {from: accounts[0]})
     ).then(result => {
       assert.equal(result[0].toString(), "Bob", "error username")
       assert.equal(result[1].toNumber(), 0, "error balance")
@@ -22,7 +22,10 @@ contract('DetherTx', function(accounts) {
       assert.equal(result[4].toNumber(), 123, "error localization")
       assert.equal(result[5].toNumber(), 0, "error comment id")
       return dether.deposit({value: 42000000, from: accounts[0]})
-    }).then(() => dether.getBalance.call({from: accounts[0]})
+    }
+    ).then(() => dether.getAddressesAccounts.call({from: accounts[0]})
+    ).then(result => console.log(result)
+    ).then(() => dether.getBalance.call({from: accounts[0]})
     ).then(result => {
       assert.equal(result.toNumber(), 42000000, "error balance")
       return dether.sendCoin(accounts[1], 10000000, {from: accounts[0]})
