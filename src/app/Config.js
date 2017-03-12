@@ -36,8 +36,8 @@ class Config extends Component {
     hasLocation: false,
     draggable: true,
     latlng: {
-      lat: 21.158964,
-      lng: -86.845937,
+      lat: 48.864716,
+      lng: 2.349014,
     },
   }
 
@@ -104,10 +104,10 @@ class Config extends Component {
     this.setState({sellPrice: e.target.value})
   }
 
-  handleClick = () => {
+/*  handleClick = () => {
         console.log(this.refs)
     this.refs.map.leafletElement.locate()
-  }
+  }*/
 
   handleLocationFound = (e) => {
     this.setState({
@@ -117,7 +117,7 @@ class Config extends Component {
   }
 
   render() {
-      const marker = this.state.hasLocation ? (
+      const marker = true ? (
       <Marker position={this.state.latlng}
       draggable={this.state.draggable}
       onDragend={this.updatePosition}
