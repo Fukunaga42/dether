@@ -7,22 +7,25 @@ contract('DetherTx', function(accounts) {
     var customer3 = accounts[2]
     var customer4 = accounts[3]
 
-    return DetherTx.new().then((instance) => {
+    return DetherTx.new().then(instance => {
       dether = instance
       return dether.addAccount("Bob", 20, '0', '123', 0, {from: accounts[0]})
     }).then(
-      () => dether.addAccount.call("Bob", 20, '0', '123', 0, {from: accounts[0]})
+      () => dether.users.call(accounts[0], {from: accounts[0]})
     ).then(result => {
       assert.equal(result[0].toString(), "Bob", "error username")
       assert.equal(result[1].toNumber(), 20, "error price")
-      assert.equal(result[2].toString(), '0', "error localizationGpsX")
-      assert.equal(result[3].toString(), '123', "error localizationGpsY")
-      assert.equal(result[4].toNumber(), 0, "error commentIpfsId")
+      assert.equal(result[2].toNumber(), 0, "error balance")
+      assert.equal(result[3].toNumber(), 0, "error volumeTrade")
+      assert.equal(result[4].toNumber(), 0, "error nbTrade")
+      assert.equal(result[5].toString(), '0', "error localizationGpsX")
+      assert.equal(result[6].toString(), '123', "error localizationGpsY")
+      assert.equal(result[7].toNumber(), 0, "error commentIpfsId")
       return dether.deposit({value: 42000000, from: accounts[0]})
     }
     ).then(() => dether.addAccount("Alice", 20, 0, 123, 0, {from: accounts[1]})
     ).then(() => dether.getAddressesAccounts.call({from: accounts[0]})
-  ).then(result => assert.deepEqual(result, [accounts[0], accounts[1]], "error get address accounts")
+    ).then(result => assert.deepEqual(result, [accounts[0], accounts[1]], "error get address accounts")
     ).then(() => dether.getBalance.call({from: accounts[0]})
     ).then(result => {
       assert.equal(result.toNumber(), 42000000, "error balance")

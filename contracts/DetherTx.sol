@@ -111,26 +111,6 @@ contract DetherTx {
     return listAdressesUsers;
   }
 
-  function getAccount (address _user) constant returns (
-      uint,
-      uint,
-      uint,
-      uint,
-      string,
-      string,
-      uint
-    ) {
-    return (
-      users[_user].price,
-      users[_user].balance,
-      users[_user].volumeTrade,
-      users[_user].nbTrade,
-      users[_user].localizationGpsX,
-      users[_user].localizationGpsY,
-      users[_user].commentIpfsId
-    );
-  }
-
   // fallback
   function () payable {}
 }
